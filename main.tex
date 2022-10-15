@@ -1,4 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set up document
+
 \documentclass{beamer}
 \usecolortheme{whale}
 \setbeamersize{text margin left=5mm,text margin right=5mm}
@@ -14,6 +17,17 @@
   \vfill
   \end{frame}
 }
+
+% Remove default navigation symbols and add just  page number
+\setbeamertemplate{navigation symbols}{} % Clear default navigation
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Title page
@@ -68,7 +82,7 @@ We accessed 240,000 emergency stroke admissions in England and Wales over three 
 SHAP values show the influence of features (even for \emph{`black box'} models).
 
 \begin{center}
-\includegraphics[width=0.83\textwidth]{./images/xgb_waterfall_low_probability.jpg}
+\includegraphics[width=0.85\textwidth]{./images/xgb_waterfall_low_probability.jpg}
 \end{center}
 \end{frame}
 
@@ -78,16 +92,66 @@ SHAP values show the influence of features (even for \emph{`black box'} models).
 \begin{frame}
 \frametitle{What drives use of thrombolysis across all hospitals?}
 
-\footnotesize{Note: SHAP values here are \emph{log odds}. Each value of \textpm 1 changes the chances of receiving thrombolysis about 3-fold. \\}
+\footnotesize{Note: SHAP values here are \emph{log odds}. Each step-change in value of \textpm 1 changes the chances of receiving thrombolysis about 3-fold.}
 
 \begin{center}
-\includegraphics[width=0.78\textwidth]{./images/xgb_thrombolysis_shap_violin.jpg}
+\includegraphics[width=0.83\textwidth]{./images/xgb_thrombolysis_shap_violin.jpg}
 \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{When will low thrombolysing units not use thrombolysis when higher thrombolysing would?}
+
+\footnotesize{Here, a high SHAP shows when a low-thrombolysing unit will reject use of thrombolysis when a higher thrombolysing hospital would use thrombolysis.}
+
+\begin{center}
+\includegraphics[width=0.80\textwidth]{./images/xgb_predicting_difference_shap_violin.jpg}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Key findings}
+General observations about thrombolysis use: The chance of receiving thrombolysis is increased by:
+\emph{
+\begin{itemize}
+    \item Shorter arrival-to-scan times
+    \item Mid-level stroke severity
+    \item Precise onset time
+    \item Lower pre-stroke disability
+\end{itemize}
+}
+
+\vspace{5mm}
+
+Lower thrombolysing units are particularly less likely to give thrombolysis to patients with:
+\emph{
+\begin{itemize}
+    \item Low or high stroke severity
+    \item Higher pre-stroke disability
+    \item Estimated onset time
+\end{itemize}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Possible questions for discussion}
+
+\begin{itemize}
+    \item Does anything surprise you here?
+    \item What are your attitudes to mild strokes and patients with estimated stroke-onset times?
+    \item What might you do with the knowledge that different hospitals have different attitudes to mild strokes and patients with estimated stroke-onset times?
+    \item Why do you think pre-stroke disability appears influential in thrombolysis decision-making?
+\end{itemize}
+
 \end{frame}
 
 \end{document}
 
-\end{document}
 
 
 
