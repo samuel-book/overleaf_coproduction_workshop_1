@@ -73,6 +73,72 @@ We can model key changes to pathway:
 We accessed 240,000 emergency stroke admissions in England and Wales over three years.
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Model accuracy, and simplification}
+
+Our machine learning models use XGBoost classification, and are based on all patients who arrive within 4 hours of known stroke onset.
+
+\vspace{5mm}
+
+\begin{columns}
+
+    \begin{column}{0.5\textwidth}
+    
+        The full model has 61 patient features:
+        
+        \begin{footnotesize}
+        \begin{itemize}
+            \item Overall accuracy = 85.2\%
+            \item Best combined sensitivity and specificity = 84.3\%
+            \item ROC AUC = 0.921
+        \end{itemize}
+        \end{footnotesize}
+        
+        \vspace{3mm}
+        
+        A simplified model with 8 features
+        
+        \begin{footnotesize}
+        \begin{itemize}
+            \item Overall accuracy = 84.8\%
+            \item Best combined sensitivity and specificity = 83.8\%
+            \item ROC AUC = 0.916
+        \end{itemize}
+        \end{footnotesize}
+    
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+    The 8 features of the simplified model are:
+        \begin{footnotesize}
+        \begin{enumerate}
+            \item Arrival-to-scan time
+            \item Stroke type (infarction/haemorrhage)
+            \item Stroke severity (NIHSS)
+            \item Precise or estimated stroke onset time
+            \item Prior disability level (mRS)
+            \item Stroke team
+            \item Use of AF anticoagulants
+            \item Onset-to-arrival time
+        \end{enumerate}
+        \end{footnotesize}
+        
+    \vspace{2mm}
+    \tiny{There are only very weak correlations between the selected features with no R-squared being greater than 0.05.}
+    \end{column}
+    
+
+
+
+
+
+\end{columns}
+
+
+    
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -92,11 +158,16 @@ SHAP values show the influence of features (even for \emph{`black box'} models).
 \begin{frame}
 \frametitle{What drives use of thrombolysis across all hospitals?}
 
-\footnotesize{Note: SHAP values here are \emph{log odds}. Each step-change in value of \textpm 1 changes the chances of receiving thrombolysis about 3-fold.}
+\footnotesize{Note: SHAP values here are \emph{log odds}. Each step-change in value of \textpm 1 changes the chances of receiving thrombolysis about 3-fold. (Plots are in order of feature importance.)}
 
 \begin{center}
-\includegraphics[width=0.83\textwidth]{./images/xgb_thrombolysis_shap_violin.jpg}
+\includegraphics[width=0.80\textwidth]{./images/xgb_thrombolysis_shap_violin.jpg}
 \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -104,12 +175,14 @@ SHAP values show the influence of features (even for \emph{`black box'} models).
 \begin{frame}
 \frametitle{When will low thrombolysing units not use thrombolysis when higher thrombolysing would?}
 
-\footnotesize{Here, a high SHAP shows when a low-thrombolysing unit will reject use of thrombolysis when a higher thrombolysing hospital would use thrombolysis.}
+\footnotesize{Here, a high SHAP shows when a low-thrombolysing unit will reject use of thrombolysis when a higher thrombolysing hospital would use thrombolysis. (Plots are in order of feature importance.)}
 
 \begin{center}
-\includegraphics[width=0.80\textwidth]{./images/xgb_predicting_difference_shap_violin.jpg}
+\includegraphics[width=0.75\textwidth]{./images/xgb_predicting_difference_shap_violin.jpg}
 \end{center}
 \end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
