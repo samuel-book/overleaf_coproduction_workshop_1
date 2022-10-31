@@ -168,9 +168,291 @@ SHAP values show the influence of features (even for \emph{`black box'} models).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 1: Base patient)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item NIHSS = 15
+            \item Prior disability level = 0
+            \item Precise onset time = Yes
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 1: Base patient)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item NIHSS = 15
+            \item Prior disability level = 0
+            \item Precise onset time = Yes
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    Our model predicts 131 out of 132 (99\%) hospitals would give this patient thrombolysis.
+    \end{column}
+
+\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 2: Milder stroke)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item \emph{NIHSS = 5}
+            \item Prior disability level = 0
+            \item Precise onset time = Yes
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 2: Milder stroke)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item \emph{NIHSS = 5}
+            \item Prior disability level = 0
+            \item Precise onset time = Yes
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    Our model predicts 120 out of 132 (91\%) hospitals would give this patient thrombolysis.
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 3: Some pre-stroke disability)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item NIHSS = 15
+            \item \emph{Prior disability level = 2}
+            \item Precise onset time = Yes
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 3: Some pre-stroke disability)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item NIHSS = 15
+            \item \emph{Prior disability level = 2}
+            \item Precise onset time = Yes
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    Our model predicts 126 out of 132 (96\%) hospitals would give this patient thrombolysis.
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 4: Estimated stroke onset time)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item NIHSS = 15
+            \item Prior disability level = 0
+            \item \emph{Precise onset time = No}
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 4: Estimated stroke onset time)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item NIHSS = 15
+            \item Prior disability level = 0
+            \item \emph{Precise onset time = No}
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    Our model predicts 84 out of 132 (64\%) hospitals would give this patient thrombolysis.
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 5: Combined changes)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item \emph{NIHSS = 5}
+            \item \emph{Prior disability level = 2}
+            \item \emph{Precise onset time = No}
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 5: Combined changes)}
+
+Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
+
+\vspace{3mm}
+
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Onset to arrival = 80 mins
+            \item Arrival to scan = 20 mins
+            \item Infarction = Yes
+            \item \emph{NIHSS = 5}
+            \item \emph{Prior disability level = 2}
+            \item \emph{Precise onset time = No}
+            \item Use of AF anticoagulents = No
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+    Our model predicts 3 out of 132 (2.3\%) hospitals would give this patient thrombolysis.
+    \end{column}
+
+\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{When will low thrombolysing units not use thrombolysis when higher thrombolysing would?}
