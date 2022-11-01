@@ -36,7 +36,7 @@
 \subtitle{Investigating variation in clinical decision-making with explainable AI}
 
 
-\author{Kerry Pearn\inst{1}, Michael Allen\inst{1}, Keira Pratt-Boyden\inst{1}, Martin James\inst{1,2} }
+\author{Kerry Pearn\inst{1}, Michael Allen\inst{1}, Anna Laws\inst{1}, Keira Pratt-Boyden\inst{1}, Martin James\inst{1,2} }
 \institute{\inst{1} University of Exeter Medical School \inst{2} Royal Devon University Healthcare NHS Foundation Trust}
 
 %\institute{Overleaf}
@@ -49,17 +49,61 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{What will we cover?}
+
+
+\begin{itemize}
+    \setlength\itemsep{1mm}
+    \item What's the problem?
+    \item What's the question?
+    \item Modelling the emergency stroke pathway
+    \item Machine learning overview
+    \item Model accuracy and simplification
+    \item SHAP?
+    \item Drivers of thrombolysis across all hopsitals
+    \item Example patients - what do different hospitals do? What would you do?
+    \item General discussion (but please feel very free to ask questions, or comments, as we go along!)
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{What's the problem?}
+
+
+\begin{itemize}
+    \setlength\itemsep{5mm}
+    \item Thrombolysis rates in England and Wales are stable at 11-12\% against an NHS Long Term Plan target of 20\%.
+    \item Thrombolysis rates at individual hospitals range from 5\% to 25\%.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{What's the question?}
+
+What causes this variation in thrombolysis rates, and would could reasonably be achieved at each hospital (allowing for each hospital's own patient population)?
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \frametitle{Breaking down the emergency stroke pathway into key steps}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{./images/pathway}
 \end{center}
 We can model key changes to pathway:
+\begin{small}
 \begin{itemize}
     \item What if the pathway were faster?
     \item What if hospital determined the stroke onset time in more patients?
     \item What if clinical decision-making was like that of \emph{benchmark} hospitals? (Predict what treatment a patient would receive at other hospitals).
 \end{itemize}
+\end{small}
+\footnotesize{We model these changes with a hospital's own patient population, to allow for inter-hospital variation in patient population characteristics.}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,8 +111,12 @@ We can model key changes to pathway:
 \begin{frame}
 \frametitle{Machine learning overview}
 \begin{center}
-\includegraphics[width=0.95\textwidth]{./images/ml_model_high_level}
+\includegraphics[width=0.90\textwidth]{./images/ml_model_high_level}
 \end{center}
+
+
+Machine learning (and nearly all \emph{artificial intelligence}) is based on the simple principle of recognising similarity to what has been seen before.
+\vspace{3mm}
 
 We accessed 240,000 emergency stroke admissions in England and Wales over three years.
 \end{frame}
@@ -128,15 +176,7 @@ Our machine learning models use XGBoost classification, and are based on all pat
     \tiny{There are only very weak correlations between the selected features with no R-squared being greater than 0.05.}
     \end{column}
     
-
-
-
-
-
 \end{columns}
-
-
-    
 \end{frame}
 
 
@@ -199,7 +239,6 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
 \frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 1: Base patient)}
 
 Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
-
 \vspace{3mm}
 
 \begin{columns}
@@ -237,7 +276,7 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
             \item Onset to arrival = 80 mins
             \item Arrival to scan = 20 mins
             \item Infarction = Yes
-            \item \emph{NIHSS = 5}
+            \item \emph{NIHSS = 4}
             \item Prior disability level = 0
             \item Precise onset time = Yes
             \item Use of AF anticoagulents = No
@@ -265,7 +304,7 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
             \item Onset to arrival = 80 mins
             \item Arrival to scan = 20 mins
             \item Infarction = Yes
-            \item \emph{NIHSS = 5}
+            \item \emph{NIHSS = 4}
             \item Prior disability level = 0
             \item Precise onset time = Yes
             \item Use of AF anticoagulents = No
@@ -273,7 +312,7 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
     \end{column}
     
     \begin{column}{0.4\textwidth}
-    Our model predicts 120 out of 132 (91\%) hospitals would give this patient thrombolysis.
+    Our model predicts 97 out of 132 (73\%) hospitals would give this patient thrombolysis.
     \end{column}
 
 \end{columns}
@@ -282,23 +321,26 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 3: Some pre-stroke disability)}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 3: Pre-stroke disability)}
 
 Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
 
 \vspace{3mm}
 
+
 \begin{columns}
-    \begin{column}{0.6\textwidth}
+    \begin{column}{0.5\textwidth}
         \begin{itemize}
             \item Onset to arrival = 80 mins
             \item Arrival to scan = 20 mins
             \item Infarction = Yes
             \item NIHSS = 15
-            \item \emph{Prior disability level = 2}
+            \item \emph{Prior disability level = 3*}
             \item Precise onset time = Yes
             \item Use of AF anticoagulents = No
         \end{itemize}
+    \vspace{3mm}    
+    \footnotesize{*Moderate disability; requires some help, but able to walk without assistance.}
     \end{column}
     
     \begin{column}{0.4\textwidth}
@@ -311,7 +353,7 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 3: Some pre-stroke disability)}
+\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 3: Pre-stroke disability)}
 
 Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
 
@@ -324,14 +366,16 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
             \item Arrival to scan = 20 mins
             \item Infarction = Yes
             \item NIHSS = 15
-            \item \emph{Prior disability level = 2}
+            \item \emph{Prior disability level = 3*}
             \item Precise onset time = Yes
             \item Use of AF anticoagulents = No
         \end{itemize}
+    \vspace{3mm}    
+    \footnotesize{*Moderate disability; requires some help, but able to walk without assistance.}
     \end{column}
     
     \begin{column}{0.4\textwidth}
-    Our model predicts 126 out of 132 (96\%) hospitals would give this patient thrombolysis.
+    Our model predicts 114 out of 132 (86\%) hospitals would give this patient thrombolysis.
     \end{column}
 
 \end{columns}
@@ -394,65 +438,6 @@ Assuming there are no reasons not stated here to exclude a patient from use of t
 \end{columns}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 5: Combined changes)}
-
-Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
-
-\vspace{3mm}
-
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item Onset to arrival = 80 mins
-            \item Arrival to scan = 20 mins
-            \item Infarction = Yes
-            \item \emph{NIHSS = 5}
-            \item \emph{Prior disability level = 2}
-            \item \emph{Precise onset time = No}
-            \item Use of AF anticoagulents = No
-        \end{itemize}
-    \end{column}
-    
-    \begin{column}{0.4\textwidth}
-    
-    \end{column}
-
-\end{columns}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Investigating how hospitals differ in thrombolysis decision-making (Patient 5: Combined changes)}
-
-Assuming there are no reasons not stated here to exclude a patient from use of thrombolysis, would you give this patient thrombolysis?
-
-\vspace{3mm}
-
-\begin{columns}
-    \begin{column}{0.5\textwidth}
-        \begin{itemize}
-            \item Onset to arrival = 80 mins
-            \item Arrival to scan = 20 mins
-            \item Infarction = Yes
-            \item \emph{NIHSS = 5}
-            \item \emph{Prior disability level = 2}
-            \item \emph{Precise onset time = No}
-            \item Use of AF anticoagulents = No
-        \end{itemize}
-    \end{column}
-    
-    \begin{column}{0.4\textwidth}
-    Our model predicts 3 out of 132 (2.3\%) hospitals would give this patient thrombolysis.
-    \end{column}
-
-\end{columns}
-\end{frame}
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -482,19 +467,33 @@ Lower thrombolysing units are particularly less likely to give thrombolysis to p
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Possible questions for discussion}
-
+\frametitle{Possible questions for discussion - but please comment as you wish!}
+\begin{small}
 \begin{itemize}
-    \item Does anything surprise you here?
-    \item What are your attitudes to mild strokes and patients with estimated stroke-onset times?
+\setlength\itemsep{2mm}
+    \item Does anything surprise you here, and do these findings reflect your own experiences?
+    \item What are your experiences in treating mild strokes and patients with estimated stroke-onset times?
     \item What might you do with the knowledge that different hospitals have different attitudes to mild strokes and patients with estimated stroke-onset times?
     \item Why do you think pre-stroke disability appears influential in thrombolysis decision-making?
+    \item Do you find SHAP understandable?
+    \item Do the patient examples help? Would you like them filled out more, or do you prefer to see the key decision-makign data in the model?
 \end{itemize}
-
+\end{small}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Thank you!!}
+    Thank you for your time and attention!
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % EXTRA SLIDE(S)
+
+\begin{frame}{Reserve slides}
+    
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
