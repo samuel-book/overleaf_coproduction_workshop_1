@@ -60,7 +60,7 @@
     \item Machine learning overview
     \item Model accuracy and simplification
     \item SHAP?
-    \item Drivers of thrombolysis across all hopsitals
+    \item Drivers of thrombolysis across all hospitals
     \item Example patients - what do different hospitals do? What would you do?
     \item General discussion (but please feel very free to ask questions, or comments, as we go along!)
 \end{itemize}
@@ -74,7 +74,7 @@
 
 \begin{itemize}
     \setlength\itemsep{5mm}
-    \item Thrombolysis rates in England and Wales are stable at 11-12\% against an NHS Long Term Plan target of 20\%.
+    \item Thrombolysis rates in England and Wales are stable at 11-12\% against a NHS Long Term Plan target of 20\%.
     \item Thrombolysis rates at individual hospitals range from 5\% to 25\%.
 \end{itemize}
 
@@ -84,7 +84,7 @@
 
 \begin{frame}{What's the question?}
 
-What causes this variation in thrombolysis rates, and would could reasonably be achieved at each hospital (allowing for each hospital's own patient population)?
+What causes this variation in thrombolysis rates, and what could reasonably be achieved at each hospital (allowing for each hospital's own patient population)?
 
 \end{frame}
 
@@ -129,7 +129,7 @@ Our machine learning models use XGBoost classification, and are based on all pat
 
 \vspace{5mm}
 
-\begin{columns}
+\begin{columns}[T] % [T] Top aligns columns
 
     \begin{column}{0.5\textwidth}
     
@@ -154,7 +154,6 @@ Our machine learning models use XGBoost classification, and are based on all pat
             \item ROC AUC = 0.916
         \end{itemize}
         \end{footnotesize}
-    
     \end{column}
     
     \begin{column}{0.5\textwidth}
@@ -470,10 +469,10 @@ Lower thrombolysing units are particularly less likely to give thrombolysis to p
 \frametitle{Possible questions for discussion - but please comment as you wish!}
 \begin{small}
 \begin{itemize}
-\setlength\itemsep{2mm}
+\setlength\itemsep{1mm}
     \item Does anything surprise you here, and do these findings reflect your own experiences?
     \item What are your experiences in treating mild strokes and patients with estimated stroke-onset times?
-    \item What might you do with the knowledge that different hospitals have different attitudes to mild strokes and patients with estimated stroke-onset times?
+    \item What might you do with the knowledge that different hospitals have different attitudes to mild strokes and patients with estimated stroke-onset times? Would it stimulate you to consider your own practice?
     \item Why do you think pre-stroke disability appears influential in thrombolysis decision-making?
     \item Do you find SHAP understandable?
     \item Do the patient examples help? Would you like them filled out more, or do you prefer to see the key decision-makign data in the model?
